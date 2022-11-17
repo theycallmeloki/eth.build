@@ -1,11 +1,20 @@
-const axios = require('axios');
-
 function NetworkRequest() {
   this.addInput("[url]","string")
+  this.addInput("[method]","string")
+  this.addInput("[headers]","object")
+  this.addInput("[body]","string")
   this.addInput("request",-1)//action
   this.addOutput("output", "string");
-  this.properties = { url: "", debounce: 1000};
-  this.size[0] = 180
+  this.properties = { 
+    url: "", 
+    method: "get", 
+    headers: {
+      "Content-Type": "application/json"
+    }, 
+    body: "", 
+    debounce: 1000
+  };
+  this.size[0] = 280
 }
 
 NetworkRequest.title = "Request";
@@ -31,6 +40,18 @@ NetworkRequest.prototype.onExecute = function() {
   let optionalUrl = this.getInputData(0)
   if(optionalUrl && optionalUrl!=this.properties.url){
     this.onPropertyChanged("url",optionalUrl)
+  }
+  let optionalMethod = this.getInputData(1)
+  if(optionalMethod && optionalMethod!=this.properties.method){
+    this.onPropertyChanged("method",optionalMethod)
+  }
+  let optionalHeaders = this.getInputData(2)
+  if(optionalHeaders && optionalHeaders!=this.properties.headers){
+    this.onPropertyChanged("headers",optionalHeaders)
+  }
+  let optionalBody = this.getInputData(3)
+  if(optionalBody && optionalBody!=this.properties.body){
+    this.onPropertyChanged("body",optionalBody)
   }
   this.setOutputData(0,this.value)
   this.outputs[0].type = typeof this.value
@@ -58,9 +79,18 @@ NetworkRequest.prototype.doRequest = async function() {
   }
   this.lastRequestTime = Date.now()
   try{
-    let result = await axios.get(this.properties.url)
-    if(result && result.data){
-      this.value = result.data
+    let requestOptions = {
+      method: this.properties.method, 
+      headers: this.properties.headers, 
+      body: this.properties.body
+    }
+    if(this.properties.method.toLowerCase() == "get" || this.properties.method.toLowerCase() == "head"){
+      delete requestOptions.body
+    }
+    let result = await fetch(this.properties.url, requestOptions)
+    let resOut = await result.text()
+    if(resOut){
+      this.value = resOut
     }
   }catch(e){}
 };
