@@ -193,16 +193,12 @@ function App() {
         <Divider/>
         <CardActions style={{justifyContent: 'center'}}>
           <div style={{padding:"2%"}}>
-            <a target="_blank" href="https://eth.build">Eth.Build</a> (<a target="_blank" href="https://github.com/austintgriffith/eth.build">source</a>) created by <a target="_blank" href="https://twitter.com/austingriffith">Austin Griffith</a>
+            <a target="_blank" href="https://edith.lol">Edith.lol</a> (<a target="_blank" href="https://github.com/theycallmeloki/eth.build">source</a>) created by <a target="_blank" href="https://twitter.com/chillgates_">Lokesh Poovaragan</a>
           </div>
         </CardActions>
-        <CardActions style={{justifyContent: 'center'}}>
-          <div style={{padding:"2%"}}>
-            With support from <a target="_blank" href="https://ethereum.org">the Ethereum Foundation</a>, <a target="_blank" href="https://consensys.net/">Consensys</a>, and <a target="_blank" href="https://gitcoin.co/grants/122/austin-griffith-ethereum-rampd">Gitcoin Grants</a>
-        </div>
-      </CardActions>
       <CardActions style={{justifyContent: 'center'}}>
         <div style={{padding:"2%"}}>
+          Special thanks to <a target="_blank" href="https://twitter.com/austingriffith">Austin Griffith</a> for the original <a target="_blank" href="https://eth.build">eth.build</a> project <br />
           Special thanks to <a target="_blank" href="https://github.com/jagenjo">Javi Agenjo</a> for <a target="_blank" href="https://github.com/jagenjo/litegraph.js">litegraph</a>
       </div>
     </CardActions>
@@ -1077,9 +1073,9 @@ return (
           <span onClick={()=>{setShowVideoLibrary(true);global.showLibrary=true;localStorage.setItem("eth.build.showLibrary",true);}}
             onTouchStart={()=>{setShowVideoLibrary(true);global.showLibrary=true;localStorage.setItem("eth.build.showLibrary",true);}}
           >
-            <span style={{color:"#03a9f4"}}>eth</span>
+            <span style={{color:"#03a9f4"}}>edith</span>
             <span style={{position:'relative',left:-5,bottom:15,color:"#f44336",marginBottom:25}}>.</span>
-            <span style={{position:'relative',left:-10,color:"#333"}}>build</span>
+            <span style={{position:'relative',left:-10,color:"#333"}}>lol</span>
           </span>
 
           <span style={{margin:5,borderLeft:"1px solid #cccccc",height:barHeight}} onClick={()=>{
@@ -1244,9 +1240,9 @@ return (
               setShowVideoLibrary(false);global.showLibrary=false;
               localStorage.setItem("eth.build.showLibrary",false)
             }}>
-            <span style={{color:"#03a9f4"}}>eth</span>
+            <span style={{color:"#03a9f4"}}>edith</span>
             <span style={{position:'relative',left:-5,bottom:15,color:"#f44336",marginBottom:25}}>.</span>
-            <span style={{position:'relative',left:-10,color:"#333"}}>build</span>
+            <span style={{position:'relative',left:-10,color:"#333"}}>lol</span>
             <span style={{margin:5,borderLeft:"1px solid #BBBBBB",height:barHeight}}>
               <Tooltip title="Collapse" style={{marginLeft:10,cursor:"pointer"}}>
                 <Icon>

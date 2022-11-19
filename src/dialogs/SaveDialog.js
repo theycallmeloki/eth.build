@@ -191,7 +191,7 @@ function SaveDialog(props) {
     element.setAttribute("href", url);
     element.setAttribute(
       "download",
-      (documentTitle ? documentTitle : "eth.build") + ".webloc"
+      (documentTitle ? documentTitle : "edith.lol") + ".webloc"
     );
     element.style.display = "none";
     if (document.body) {
