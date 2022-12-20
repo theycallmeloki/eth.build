@@ -1,12 +1,14 @@
-const { ethers } = require("ethers");
+const { ethers } = require('ethers');
 
 function assemble(ASM) {
     let opcodes = [];
-    ASM.split("\n").filter((l) => (l.substring(0, 1) !== ";" && l.trim() !== "")).forEach((line) => {
-        line.split(" ").forEach((opcode) => {
-            opcodes.push(opcode);
+    ASM.split('\n')
+        .filter((l) => l.substring(0, 1) !== ';' && l.trim() !== '')
+        .forEach((line) => {
+            line.split(' ').forEach((opcode) => {
+                opcodes.push(opcode);
+            });
         });
-    });
     return ethers.utils.hexlify(ethers.utils.concat(opcodes));
 }
 
@@ -48,14 +50,14 @@ let BootstrapAsm = `
 `;
 
 function WispBootstrap() {
-  this.addOutput("initcode","string")
-  this.size[0] = 210
+    this.addOutput('initcode', 'string');
+    this.size[0] = 210;
 }
 
-WispBootstrap.title = "Wisp Bootstrap";
+WispBootstrap.title = 'Wisp Bootstrap';
 
-WispBootstrap.prototype.onExecute = function() {
-  this.setOutputData(0,assemble(BootstrapAsm))
+WispBootstrap.prototype.onExecute = function () {
+    this.setOutputData(0, assemble(BootstrapAsm));
 };
 
-export default WispBootstrap
+export default WispBootstrap;

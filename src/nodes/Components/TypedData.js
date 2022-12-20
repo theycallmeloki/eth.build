@@ -1,27 +1,24 @@
-
 function TypedData() {
-  this.addInput("name","string")
-  this.addInput("primaryType","string")
-  this.addInput("structure","object")
-  this.addInput("verifyingContract","string")
-  this.addInput("",-1)
-  this.addOutput("typedData","object")
-  this.size[0] = 190
+    this.addInput('name', 'string');
+    this.addInput('primaryType', 'string');
+    this.addInput('structure', 'object');
+    this.addInput('verifyingContract', 'string');
+    this.addInput('', -1);
+    this.addOutput('typedData', 'object');
+    this.size[0] = 190;
 }
 
-TypedData.title = "TypedData";
-
+TypedData.title = 'TypedData';
 
 TypedData.prototype.onAction = async function () {
+    let name = this.getInputData(0);
+    let primaryType = this.getInputData(1);
+    let structure = this.getInputData(2);
+    let verifyingContract = this.getInputData(3);
 
-  let name = this.getInputData(0)
-  let primaryType = this.getInputData(1)
-  let structure = this.getInputData(2)
-  let verifyingContract = this.getInputData(3)
+    console.log('parse structure and update the inputs...', structure);
 
-  console.log("parse structure and update the inputs...",structure)
-
-  /*
+    /*
     const message = {
         holder: this.holder,
         spender: this.spender,
@@ -81,13 +78,11 @@ TypedData.prototype.onAction = async function () {
         message: message
     }*/
 
+    this.typedData = {};
+};
 
-    this.typedData = { }
-}
-
-
-TypedData.prototype.onExecute = function() {
-  /*let changed = false
+TypedData.prototype.onExecute = function () {
+    /*let changed = false
 
   let holder = this.getInputData(0)
   if(holder!=this.holder){
@@ -101,8 +96,7 @@ TypedData.prototype.onExecute = function() {
   if(changed) {
     this.onAction()
   }*/
-  this.setOutputData(0,this.typedData)
+    this.setOutputData(0, this.typedData);
 };
 
-
-export default TypedData
+export default TypedData;

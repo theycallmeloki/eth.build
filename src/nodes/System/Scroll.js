@@ -1,17 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 import Blockies from 'react-blockies';
 
 import { Input, FilledInput } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 function Text() {
-  this.addInput("x", "number");
-  this.addInput("y",  "number");
-  this.addInput("", -1);
+    this.addInput('x', 'number');
+    this.addInput('y', 'number');
+    this.addInput('', -1);
 }
 
-Text.title = "Scroll";
+Text.title = 'Scroll';
 /*
 Text.prototype.onConnectionsChange = function(args){
   console.log("onConnectionsChange",args)
@@ -32,33 +32,22 @@ Text.prototype.getTitle = function() {
   return this.properties.title;
 };
 */
-Text.prototype.onAction = function(e,f,g) {
+Text.prototype.onAction = function (e, f, g) {
+    //this.graph.canvas.ds.offset[0] = this.getInputData[0]
+    //this.graph.canvas.ds.offset[1] = this.getInputData[1]
+};
 
-  //this.graph.canvas.ds.offset[0] = this.getInputData[0]
-  //this.graph.canvas.ds.offset[1] = this.getInputData[1]
-}
-
-Text.prototype.onDrawBackground = function(ctx) {
-
-  if (this.flags.collapsed) {
-    /*this.render(
+Text.prototype.onDrawBackground = function (ctx) {
+    if (this.flags.collapsed) {
+        /*this.render(
       <div>
 
       </div>
     )*/
-    this.destory()///SHOULD WE DESTORY THE ELEMENT FROM THE DOM OR
-  }else{
-    this.render(
-      <div>
-        Scroller
-      </div>
-    )
-  }
-
-
+        this.destory(); ///SHOULD WE DESTORY THE ELEMENT FROM THE DOM OR
+    } else {
+        this.render(<div>Scroller</div>);
+    }
 };
 
-
-
-
-export default Text
+export default Text;

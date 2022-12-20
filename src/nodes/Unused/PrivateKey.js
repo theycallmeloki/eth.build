@@ -1,47 +1,49 @@
-
 import React from 'react';
-import ReactDOM from 'react-dom'
-import {c_c} from 'color-mixer'
+import ReactDOM from 'react-dom';
+import { c_c } from 'color-mixer';
 
 function PrivateKey() {
-  this.addInput("", 0, { label: "" });
-  this.value = 0;
-  this.size = [460, 110];
+    this.addInput('', 0, { label: '' });
+    this.value = 0;
+    this.size = [460, 110];
 }
 
-PrivateKey.title = "PrivateKey";
-PrivateKey.title_color = "#7bc969";
+PrivateKey.title = 'PrivateKey';
+PrivateKey.title_color = '#7bc969';
 
-
-PrivateKey.prototype.onExecute = function() {
-  if (this.inputs[0]) {
-    this.value = this.getInputData(0);
-  }
+PrivateKey.prototype.onExecute = function () {
+    if (this.inputs[0]) {
+        this.value = this.getInputData(0);
+    }
 };
 
-PrivateKey.prototype.getTitle = function() {
-  if (this.flags.collapsed) {
-    return this.value;
-  }
-  return this.title
+PrivateKey.prototype.getTitle = function () {
+    if (this.flags.collapsed) {
+        return this.value;
+    }
+    return this.title;
 };
 
-PrivateKey.toString = function(o) {
-  return o
+PrivateKey.toString = function (o) {
+    return o;
 };
 
-PrivateKey.prototype.onDrawBackground = function(ctx) {
-  if (this.flags.collapsed) {
-    this.destory()///SHOULD WE DESTORY THE ELEMENT FROM THE DOM OR JUST NOT SHOW IT?! THIS SEEMS WEIRD
-  }else{
-    //console.log("this.value",this.value,this.value.substr)
-    if(this.value && typeof this.value.substr == "function"){
-
-      let leftPad = 22
-      for(let i=2;i < 62;i=i+6){
-        ctx.fillStyle = "#"+this.value.substr(i,6);
-        ctx.fillRect(leftPad + 20*i/2.9, 20, 30, this.size[1]-40);
-    /*
+PrivateKey.prototype.onDrawBackground = function (ctx) {
+    if (this.flags.collapsed) {
+        this.destory(); ///SHOULD WE DESTORY THE ELEMENT FROM THE DOM OR JUST NOT SHOW IT?! THIS SEEMS WEIRD
+    } else {
+        //console.log("this.value",this.value,this.value.substr)
+        if (this.value && typeof this.value.substr == 'function') {
+            let leftPad = 22;
+            for (let i = 2; i < 62; i = i + 6) {
+                ctx.fillStyle = '#' + this.value.substr(i, 6);
+                ctx.fillRect(
+                    leftPad + (20 * i) / 2.9,
+                    20,
+                    30,
+                    this.size[1] - 40,
+                );
+                /*
           //let lastMixed
           if(i < 56){
             var thisone = new c_c.Color({hex:'#'+this.value.substr(i,6)})
@@ -67,20 +69,12 @@ PrivateKey.prototype.onDrawBackground = function(ctx) {
           }
 
 */
-
-
-      }
-
+            }
+        }
+        this.render(
+            <div style={{ fontSize: 11, marginTop: 6 }}>{this.value}</div>,
+        );
     }
-    this.render(
-      <div style={{fontSize:11,marginTop:6}}>
-        {this.value}
-      </div>
-    )
 };
 
-
-
-};
-
-export default PrivateKey
+export default PrivateKey;
